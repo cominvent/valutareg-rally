@@ -1,6 +1,6 @@
 {
   "trans": {
-    "dynamic": "strict",
+    "dynamic": "true",
     "_all": {
       "enabled": false
     },

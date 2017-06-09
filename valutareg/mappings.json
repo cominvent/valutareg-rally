@@ -41,49 +41,48 @@
       "norkontonr": {
         "type": "keyword"
       },
-      "type": "keyword"
-    },
-    "norstatsborgerland": {
-      "fields": {
-        "keyword": {
-          "ignore_above": 256,
-          "type": "keyword"
-        }
+      "norstatsborgerland": {
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        },
+        "type": "text"
       },
-      "type": "text"
-    },
-    "transdato": {
-      "type": "date"
-    },
-    "utletternavn": {
-      "type": "text"
-    },
-    "utlfodselsnr": {
-      "type": "keyword"
-    },
-    "utlfornavn": {
-      "type": "text"
-    },
-    "utlkontonr": {
-      "type": "keyword"
-    },
-    "utlland": {
-      "fields": {
-        "keyword": {
-          "ignore_above": 256,
-          "type": "keyword"
-        }
+      "transdato": {
+        "type": "date"
       },
-      "type": "text"
-    },
-    "valutabelop": {
-      "type": "float"
-    },
-    "valutabelopstr": {
-      "type": "keyword"
-    },
-    "valutakode": {
-      "type": "keyword"
+      "utletternavn": {
+        "type": "text"
+      },
+      "utlfodselsnr": {
+        "type": "keyword"
+      },
+      "utlfornavn": {
+        "type": "text"
+      },
+      "utlkontonr": {
+        "type": "keyword"
+      },
+      "utlland": {
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        },
+        "type": "text"
+      },
+      "valutabelop": {
+        "type": "float"
+      },
+      "valutabelopstr": {
+        "type": "keyword"
+      },
+      "valutakode": {
+        "type": "keyword"
+      }
     }
   }
 }

@@ -1,0 +1,102 @@
+{
+  "short-description": "Valutaregisteret Elasticsearch benchmark",
+  "description": "This test indexes VR transactions using 8 client threads and 10.000 docs per bulk request against Elasticsearch",
+  "indices": [
+    {
+      "name": "valuta",
+      "types": [
+        {
+          "name": "trans",
+          "mapping": "mappings.json",
+          "documents": "documents.json.bz2",
+          "document-count": 8647880,
+          "compressed-bytes": 197857614,
+          "uncompressed-bytes": 2790927196
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "name": "index",
+      "operation-type": "index",
+      "bulk-size": 10000
+    },
+    {
+      "name": "force-merge",
+      "operation-type": "force-merge"
+    },
+    {
+      "name": "query-orgno",
+      "operation-type": "search",
+      "body": {
+        "query": {
+          "term": {
+            "body": "physician"
+          }
+        }
+      }
+    },
+    {
+      "name": "query-surname",
+      "operation-type": "search",
+      "body": {
+        "query": {
+          "term": {
+            "body": "physician"
+          }
+        }
+      }
+    },
+    {
+      "name": "query-filter-month",
+      "operation-type": "search",
+      "body": {
+        "query": {
+          "term": {
+            "body": "physician"
+          }
+        }
+      }
+    },
+    {
+      "name": "query-match-all",
+      "operation-type": "search",
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    }
+  ],
+  "challenges": [
+    {
+      "name": "index-and-query",
+      "description": "Index 50mill docs",
+      "default": true,
+      "index-settings": {
+        "index.number_of_replicas": 0
+      },
+      "schedule": [
+        {
+          "operation": "index",
+          "warmup-time-period": 120,
+          "clients": 8
+        },
+        {
+          "parallel": {
+            "clients": 8,
+            "warmup-iterations": 1000,
+            "iterations": 1000,
+            "tasks": [
+              {
+                "operation": "query-match-all",
+                "target-throughput": 2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

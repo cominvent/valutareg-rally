@@ -1,0 +1,90 @@
+{
+    "trans": {
+        "dynamic": "strict",
+        "_all": {
+            "enabled": false
+        },
+        "properties": {
+            "behandlingskode": {
+                "type": "keyword"
+            },
+            "innut": {
+                "type": "keyword"
+            },
+            "location": {
+                "type": "keyword"
+            },
+            "nokbelop": {
+                "type": "float"
+            },
+            "nokbelopstr": {
+                "type": "keyword"
+            },
+            "noretternavn": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "norfodselsdato": {
+                "type": "keyword"
+            },
+            "norfodselsnr": {
+                "type": "keyword"
+            },
+            "norfornavn": {
+                "type": "text"
+            },
+            "norkontonr": {
+                "type": "keyword"
+            },
+                "type": "keyword"
+            },
+            "norstatsborgerland": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "transdato": {
+                "type": "date"
+            },
+            "utletternavn": {
+                "type": "text"
+            },
+            "utlfodselsnr": {
+                "type": "keyword"
+            },
+            "utlfornavn": {
+                "type": "text"
+            },
+            "utlkontonr": {
+                "type": "keyword"
+            },
+            "utlland": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "valutabelop": {
+                "type": "float"
+            },
+            "valutabelopstr": {
+                "type": "keyword"
+            },
+            "valutakode": {
+                "type": "keyword"
+            }
+        }
+    }
+}

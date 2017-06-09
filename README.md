@@ -1,11 +1,9 @@
-rally-tracks
-------------
+valutareg-rally
+---------------
 
-This repository contains the default track specifications for the Elasticsearch benchmarking tool [Rally](https://github.com/elastic/rally).
-
-Tracks are used to describe benchmarks in Rally.
-
-You should not need to use this repository directly, except if you want to look under the hood or create your own tracks. We have created a [tutorial on how to create your own tracks](https://esrally.readthedocs.io/en/latest/adding_tracks.html).
+This repository contains the track specifications for the Elasticsearch
+benchmarking tool [Rally](https://github.com/elastic/rally) for use with
+Valutaregisteret.
 
 Versioning Scheme
 -----------------
@@ -33,15 +31,3 @@ Example: If you want to benchmark Elasticsearch 5.0.0, run the following command
 ```
 esrally --distribution-version=5.0.0
 ```
-
-How to Contribute
------------------
-
-If you want to contribute a track, please ensure that it works against the master version of Elasticsearch (i.e. submit PRs against the master branch). We can then check whether it's feasible to backport the track to earlier Elasticsearch versions.
- 
-See all details in the [contributor guidelines](https://github.com/elastic/rally/blob/master/CONTRIBUTING.md).
- 
-License
--------
- 
-There is no single license for this repository. Licenses are chosen per track. They are typically licensed under the same terms as the source data. See the README files of each track for more details.

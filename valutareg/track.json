@@ -9,9 +9,9 @@
           "name": "trans",
           "mapping": "mappings.json",
           "documents": "documents.json.bz2",
-          "document-count": 8647880,
-          "compressed-bytes": 197857614,
-          "uncompressed-bytes": 2790927196
+          "document-count": 10000000,
+          "compressed-bytes": 675187354,
+          "uncompressed-bytes": 5140040150
         }
       ]
     }

@@ -3,7 +3,7 @@
   "description": "This test indexes VR transactions using 8 client threads and 10.000 docs per bulk request against Elasticsearch",
   "indices": [
     {
-      "name": "valuta",
+      "name": "alle",
       "auto-managed": false,
       "types": [
         {
@@ -43,6 +43,20 @@
       "pages": 20,
       "results-per-page": 10000,
       "param-source": "currency-code-query-source"
+    },
+    {
+      "name": "batch-monthrange-country-200k",
+      "operation-type": "search",
+      "pages": 200,
+      "results-per-page": 1000,
+      "param-source": "daterange-country-query-source"
+    },
+    {
+      "name": "batch-monthrange-country-500k",
+      "operation-type": "search",
+      "pages": 500,
+      "results-per-page": 1000,
+      "param-source": "daterange-country-query-source"
     },
     {
       "name": "query-monthrange-agg-country-10k",
@@ -96,9 +110,19 @@
       "clients": 2,
       "schedule": [
         {
+          "operation": "batch-monthrange-country-200k",
+          "warmup-time-period": 5,
+          "time-period": 60
+        },
+        {
+          "operation": "batch-monthrange-country-500k",
+          "warmup-time-period": 5,
+          "time-period": 60
+        },
+        {
           "operation": "query-monthrange-agg-country-10k",
           "warmup-iterations": 200,
-          "iterations": 60,
+          "iterations": 1000,
           "target-throughput": 2
         },
         {
@@ -115,8 +139,8 @@
         {
           "parallel": {
             "clients": 4,
-            "warmup-iterations": 20,
-            "iterations": 100,
+            "warmup-time-period": 10,
+            "time-period": 60,
             "tasks": [
               {
                 "operation": "query-valuta-10",

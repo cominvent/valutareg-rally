@@ -137,9 +137,42 @@ class DateRangeMonthPerCountryLastnameAggQueryParamSource(QueryParamSource):
         }
         return result
 
+class DateRangeMonthBatchQueryParamSource(QueryParamSource):
+    def params(self):
+        month = random.randint(12, 480)
+        result = {
+            "body": {
+                "query": {
+                    "bool": {
+                        "filter": [
+                            {
+                                "range" : {
+                                    "transdato" : {
+                                        "gte" : "now-%sM/M" % month,
+                                        "lt" : "now-%sM/M" % (month-1)
+                                    }
+                                }
+                            },
+                            {
+                                "term": {
+                                    "utlland": "%s" % random.choice(self.countrycode)
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "index": None,
+            "type": None,
+            "use_request_cache": self._params.get("use_request_cache", False)
+        }
+        return result
+
+
 def register(registry):
     registry.register_param_source("currency-code-query-source", CurrencyCodeQueryParamSource)
     registry.register_param_source("currency-code-10-query-source", CurrencyCode10QueryParamSource)
     registry.register_param_source("currency-code-10k-query-source", CurrencyCode10kQueryParamSource)
     registry.register_param_source("foreign-last-query-source", ForeignLastnameQueryParamSource)
     registry.register_param_source("daterange-country-lnagg-query-source", DateRangeMonthPerCountryLastnameAggQueryParamSource)
+    registry.register_param_source("daterange-country-query-source", DateRangeMonthBatchQueryParamSource)

@@ -42,18 +42,18 @@
         "type": "keyword"
       },
       "norstatsborgerland": {
+        "type": "keyword"
+      },
+      "transdato": {
+        "type": "date"
+      },
+      "utletternavn": {
         "fields": {
           "keyword": {
             "ignore_above": 256,
             "type": "keyword"
           }
         },
-        "type": "text"
-      },
-      "transdato": {
-        "type": "date"
-      },
-      "utletternavn": {
         "type": "text"
       },
       "utlfodselsnr": {
@@ -66,13 +66,7 @@
         "type": "keyword"
       },
       "utlland": {
-        "fields": {
-          "keyword": {
-            "ignore_above": 256,
-            "type": "keyword"
-          }
-        },
-        "type": "text"
+        "type": "keyword"
       },
       "valutabelop": {
         "type": "float"
@@ -81,6 +75,66 @@
         "type": "keyword"
       },
       "valutakode": {
+        "type": "keyword"
+      },
+      "belopetgjelder": {
+        "type": "text"
+      },
+      "betalingsart": {
+        "type": "keyword"
+      },
+      "bic": {
+        "type": "keyword"
+      },
+      "detaljtranstype": {
+        "type": "keyword"
+      },
+      "noradresse": {
+        "type": "text"
+      },
+      "norpartstype": {
+        "type": "keyword"
+      },
+      "norpostnr": {
+        "type": "keyword"
+      },
+      "norpoststed": {
+        "type": "keyword"
+      },
+      "phonnoretternavn": {
+        "type": "text"
+      },
+      "phonnorfornavn": {
+        "type": "text"
+      },
+      "phonutletternavn": {
+        "type": "text"
+      },
+      "phonutlfornavn": {
+        "type": "text"
+      },
+      "rapportbank": {
+        "type": "keyword"
+      },
+      "rapporteringspliktig": {
+        "type": "keyword"
+      },
+      "referanse": {
+        "type": "keyword"
+      },
+      "utladresse": {
+        "type": "text"
+      },
+      "utlkontoland": {
+        "type": "keyword"
+      },
+      "utlpostnr": {
+        "type": "keyword"
+      },
+      "utlpoststed": {
+        "type": "keyword"
+      },
+      "vrtransid": {
         "type": "keyword"
       }
     }

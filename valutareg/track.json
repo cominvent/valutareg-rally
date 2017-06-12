@@ -4,14 +4,11 @@
   "indices": [
     {
       "name": "valuta",
+      "auto-managed": false,
       "types": [
         {
           "name": "trans",
-          "mapping": "mappings.json",
-          "documents": "documents.json.bz2",
-          "document-count": 10000000,
-          "compressed-bytes": 675187354,
-          "uncompressed-bytes": 5140040150
+          "mapping": "mappings.json"
         }
       ]
     }
@@ -27,37 +24,9 @@
       "operation-type": "force-merge"
     },
     {
-      "name": "query-orgno",
-      "operation-type": "search",
-      "body": {
-        "query": {
-          "term": {
-            "body": "physician"
-          }
-        }
-      }
-    },
-    {
       "name": "query-surname",
       "operation-type": "search",
-      "body": {
-        "query": {
-          "term": {
-            "body": "physician"
-          }
-        }
-      }
-    },
-    {
-      "name": "query-filter-month",
-      "operation-type": "search",
-      "body": {
-        "query": {
-          "term": {
-            "body": "physician"
-          }
-        }
-      }
+      "param-source": "foreign-last-query-source"
     },
     {
       "name": "query-match-all",
@@ -67,13 +36,30 @@
           "match_all": {}
         }
       }
+    },
+    {
+      "name": "batch-valutakode-200k",
+      "operation-type": "search",
+      "pages": 20,
+      "results-per-page": 10000,
+      "param-source": "currency-code-query-source"
+    },
+    {
+      "name": "query-valuta-10k",
+      "operation-type": "search",
+      "param-source": "currency-code-10k-query-source"
+    },
+    {
+      "name": "query-valuta-10",
+      "operation-type": "search",
+      "param-source": "currency-code-10-query-source"
     }
   ],
   "challenges": [
     {
       "name": "index-and-query",
       "description": "Index 50mill docs",
-      "default": true,
+      "default": false,
       "index-settings": {
         "index.number_of_replicas": 0
       },
@@ -97,6 +83,51 @@
           }
         }
       ]
+    },
+    {
+      "name": "query",
+      "description": "Query an index of 100mill",
+      "default": true,
+      "clients": 2,
+      "schedule": [
+        {
+          "operation": "query-match-all",
+          "warmup-iterations": 200,
+          "iterations": 1000,
+          "target-throughput": 60
+        },
+        {
+          "operation": "query-surname",
+          "warmup-iterations": 200,
+          "iterations": 1000,
+          "target-throughput": 60
+        },
+        {
+          "operation": "batch-valutakode-200k",
+          "warmup-iterations": 10,
+          "iterations": 100
+        },
+        {
+          "parallel": {
+            "clients": 4,
+            "warmup-iterations": 20,
+            "iterations": 100,
+            "tasks": [
+              {
+                "operation": "query-valuta-10",
+                "target-throughput": 2,
+                "clients": 1
+              },
+              {
+                "operation": "query-valuta-10k",
+                "target-throughput": 0.2,
+                "clients": 3
+              }
+            ]
+          }
+        }
+      ]
     }
+
   ]
 }

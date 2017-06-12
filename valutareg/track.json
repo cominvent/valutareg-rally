@@ -45,6 +45,11 @@
       "param-source": "currency-code-query-source"
     },
     {
+      "name": "query-monthrange-agg-country-10k",
+      "operation-type": "search",
+      "param-source": "daterange-country-lnagg-query-source"
+    },
+    {
       "name": "query-valuta-10k",
       "operation-type": "search",
       "param-source": "currency-code-10k-query-source"
@@ -91,21 +96,21 @@
       "clients": 2,
       "schedule": [
         {
-          "operation": "query-match-all",
+          "operation": "query-monthrange-agg-country-10k",
           "warmup-iterations": 200,
-          "iterations": 1000,
-          "target-throughput": 60
+          "iterations": 60,
+          "target-throughput": 2
         },
         {
           "operation": "query-surname",
           "warmup-iterations": 200,
-          "iterations": 1000,
+          "iterations": 3000,
           "target-throughput": 60
         },
         {
           "operation": "batch-valutakode-200k",
           "warmup-iterations": 10,
-          "iterations": 100
+          "iterations": 200
         },
         {
           "parallel": {

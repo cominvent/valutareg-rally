@@ -121,20 +121,20 @@
         },
         {
           "operation": "query-monthrange-agg-country-10k",
-          "warmup-iterations": 200,
-          "iterations": 1000,
+          "warmup-time-period": 5,
+          "time-period": 60,
           "target-throughput": 2
         },
         {
           "operation": "query-surname",
-          "warmup-iterations": 200,
-          "iterations": 3000,
+          "warmup-time-period": 5,
+          "time-period": 60,
           "target-throughput": 60
         },
         {
           "operation": "batch-valutakode-200k",
-          "warmup-iterations": 10,
-          "iterations": 200
+          "warmup-time-period": 5,
+          "time-period": 60
         },
         {
           "parallel": {

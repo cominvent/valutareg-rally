@@ -139,7 +139,7 @@ class DateRangeMonthPerCountryLastnameAggQueryParamSource(QueryParamSource):
 
 class DateRangeYearBatchQueryParamSource(QueryParamSource):
     def params(self):
-        month = random.randint(24, 480)
+        month = random.randint(48, 400)
         result = {
             "body": {
                 "query": {

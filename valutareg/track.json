@@ -45,14 +45,14 @@
       "param-source": "currency-code-query-source"
     },
     {
-      "name": "batch-monthrange-country-200k",
+      "name": "batch-year-200k",
       "operation-type": "search",
       "pages": 200,
       "results-per-page": 1000,
       "param-source": "daterange-country-query-source"
     },
     {
-      "name": "batch-monthrange-country-500k",
+      "name": "batch-year-500k",
       "operation-type": "search",
       "pages": 500,
       "results-per-page": 1000,
@@ -110,12 +110,12 @@
       "clients": 2,
       "schedule": [
         {
-          "operation": "batch-monthrange-country-200k",
+          "operation": "batch-year-200k",
           "warmup-time-period": 5,
           "time-period": 60
         },
         {
-          "operation": "batch-monthrange-country-500k",
+          "operation": "batch-year-500k",
           "warmup-time-period": 5,
           "time-period": 60
         },

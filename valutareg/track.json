@@ -45,6 +45,13 @@
       "param-source": "currency-code-query-source"
     },
     {
+      "name": "batch-year-50k",
+      "operation-type": "search",
+      "pages": 50,
+      "results-per-page": 1000,
+      "param-source": "daterange-country-query-source"
+    },
+    {
       "name": "batch-year-200k",
       "operation-type": "search",
       "pages": 200,
@@ -109,6 +116,11 @@
       "default": true,
       "clients": 2,
       "schedule": [
+        {
+          "operation": "batch-year-50k",
+          "warmup-time-period": 5,
+          "time-period": 60
+        },
         {
           "operation": "batch-year-200k",
           "warmup-time-period": 5,
